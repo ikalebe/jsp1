@@ -1,5 +1,6 @@
 package Servlet;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -33,7 +34,11 @@ public class ServletLogin extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		String login = request.getParameter("login");
+		String senha = request.getParameter("senha");
+		
+		RequestDispatcher redirecionar = request.getRequestDispatcher("index.jsp");
+		request.setAttribute("msg", "Informe o login e a senha corretamente!");
 	}
 
 }
